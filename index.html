@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Te amo, Rana</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS próprio -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="player-bg text-[#F2F9FE]">
+
+<main class="player-container">
+
+  <!-- HEADER -->
+  <header class="player-header">
+    <button aria-label="Fechar">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+      </svg>
+    </button>
+
+    <h1 class="player-title">Take Your Heart</h1>
+
+    <button aria-label="Mais opções">
+      <svg class="icon" viewBox="0 0 24 24">
+        <circle cx="5" cy="12" r="1"/>
+        <circle cx="12" cy="12" r="1"/>
+        <circle cx="19" cy="12" r="1"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- CAPA / CARROSSEL -->
+ <section class="album-section">
+  <div class="album-cover">
+    <div class="carousel" id="carousel">
+      <img src="assets/fotos/1.jpeg">
+      <img src="assets/fotos/2.jpeg">
+      <img src="assets/fotos/3.jpeg">
+      <img src="assets/fotos/4.jpeg">
+      <img src="assets/fotos/5.jpeg">
+      <img src="assets/fotos/6.jpeg">
+    </div>
+  </div>
+
+  <div class="carousel-dots" id="carouselDots"></div>
+</section>
+
+  <!-- INFO DA MÚSICA -->
+  <section class="track-info">
+    <div class="track-text">
+      <h2 class="track-title">
+        <span class="scrolling-text">Sweet</span>
+      </h2>
+      <span class="track-artist">Cigarettes After Sex</span>
+    </div>
+
+    <div class="track-check">✓</div>
+  </section>
+
+  <!-- PROGRESSO -->
+  <section class="progress-section">
+    <div class="progress-bar" id="progressBar">
+      <div class="progress-fill" id="progressFill"></div>
+      <div class="progress-thumb" id="progressThumb"></div>
+    </div>
+
+    <div class="progress-time">
+      <span id="currentTime">0:00</span>
+      <span id="remainingTime">-0:00</span>
+    </div>
+  </section>
+
+  <!-- CONTROLES -->
+ <section class="controls">
+  <button class="control-btn" id="shuffleBtn" aria-label="Shuffle">
+    <svg viewBox="0 0 24 24" class="control-icon">
+      <path d="M16 3h5v5M4 20l5-5M4 4l16 16M21 16v5h-5"
+            fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <button class="control-btn opacity-25" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" class="control-icon">
+      <path d="M19 20L9 12l10-8v16zM5 4v16"
+            fill="currentColor"/>
+    </svg>
+  </button>
+
+<button aria-label="Play" class="play-btn" id="playBtn">
+  <svg id="playIcon" viewBox="0 0 24 24" width="28" height="28">
+    <path d="M8 5v14l11-7z" fill="currentColor"/>
+  </svg>
+</button>
+
+  <button class="control-btn opacity-25" aria-label="Próxima">
+    <svg viewBox="0 0 24 24" class="control-icon">
+      <path d="M5 4l10 8-10 8V4zM19 4v16"
+            fill="currentColor"/>
+    </svg>
+  </button>
+
+  <button class="control-btn" id="repeatBtn" aria-label="Repeat">
+    <svg viewBox="0 0 24 24" class="control-icon">
+      <path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"
+            fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</section>
+
+  <!-- SOBRE O CASAL -->
+  <section class="card about">
+<div class="about-photo">
+  <img src="assets/fotos/7.jpeg">
+  <span class="about-title">Sobre o casal</span>
+</div>
+    <div class="about-names">
+      <strong>Thiago e Rana</strong>
+      <span>Juntos desde 2020</span>
+    </div>
+
+<!-- CONTADOR -->
+  <div class="stats-grid">
+    <div class="stat">
+      <b id="years">0</b>
+      <span>Anos</span>
+    </div>
+
+    <div class="stat">
+      <b id="months">0</b>
+      <span>Meses</span>
+    </div>
+
+    <div class="stat">
+      <b id="days">0</b>
+      <span>Dias</span>
+    </div>
+
+    <div class="stat">
+      <b id="hours">0</b>
+      <span>Horas</span>
+    </div>
+
+    <div class="stat">
+      <b id="minutes">0</b>
+      <span>Minutos</span>
+    </div>
+
+    <div class="stat">
+      <b id="seconds">0</b>
+      <span>Segundos</span>
+    </div>
+  </div>
+</section>
+  <!-- MENSAGEM -->
+<section class="card message">
+  <div class="soneto">
+    <p class="soneto-preview">
+      Rana, minha amada tão especial,
+    </p>
+
+    <div class="soneto-full" id="sonetoFull">
+      <p>Tão doce e graciosa como a mais delicada flor,</p>
+      <p>Seu brilho e aroma invadem cada local,</p>
+      <p>Em teus olhos só encontro amor.</p>
+
+      <br>
+
+      <p>Rana é como Moonlight Sonata,</p>
+      <p>Uma sinfonia de amor e emoção,</p>
+      <p>Suas curvas suaves, tão delicadas,</p>
+      <p>Refletem a melodia e a paixão.</p>
+
+      <br>
+
+      <p>Rana inspira e motiva,</p>
+      <p>Assim como Ikigai,</p>
+      <p>Ela me faz estar.</p>
+
+      <br>
+
+      <p>Rana, és a luz da lua em minha vida,</p>
+      <p>Melodiosa inspiração que me cativa.</p>
+
+
+      <br>
+
+      <p> <strong>Esse foi o soneto que te enviei em 2023. Mas HOJE, te escrevi um novo:</strong></p>
+
+      <br>
+
+      <p>No caos do mundo, és porto e calmaria,</p>
+      <p>Teu riso apazigua o meu viver;</p>
+      <p>Em ti, meu tempo encontra harmonia,</p>
+      <p>És verso certo que escolhi escrever.</p>
+
+<br>
+
+      <p>Se a noite cai, teu olhar me guia,</p>
+      <p>Luz que insiste em jamais se perder;</p>
+      <p>Teu nome é chama, é doce poesia,</p>
+      <p>Que em minha voz aprende a florescer.</p>
+
+<br>
+
+      <p>Se o dia pesa, és abrigo e chão,</p>
+      <p>Promessa firme contra a solidão;</p>
+      <p>Em teus silêncios, encontro meu lar.</p>
+
+<br>
+
+      <p>E se o futuro ousar nos desafiar,</p>
+      <p>Que seja ao lado teu meu coração,</p>
+      <p>Pois amar-te é meu jeito de ficar.</p>
+    </div>
+
+    <button class="reveal-btn" id="revealBtn">
+      Mostrar mensagem completa
+    </button>
+  </div>
+</section>
+
+</main>
+
+<!-- ÁUDIO -->
+<audio id="audio" src="assets/audio/musica.mp3" preload="metadata"></audio>
+
+<!-- JS -->
+<script src="script.js"></script>
+<script>
+  // DATA REAL DE INÍCIO DO RELACIONAMENTO
+  // Formato: new Date(2020, 8, 23, 00, 40, 0)
+  const startDate = new Date(2020, 0, 15, 0, 0, 0); // EXEMPLO
+
+  function updateCounter() {
+    const now = new Date();
+
+    let years = now.getFullYear() - startDate.getFullYear();
+    let months = now.getMonth() - startDate.getMonth();
+    let days = now.getDate() - startDate.getDate();
+    let hours = now.getHours() - startDate.getHours();
+    let minutes = now.getMinutes() - startDate.getMinutes();
+    let seconds = now.getSeconds() - startDate.getSeconds();
+
+    if (seconds < 0) {
+      seconds += 60;
+      minutes--;
+    }
+
+    if (minutes < 0) {
+      minutes += 60;
+      hours--;
+    }
+
+    if (hours < 0) {
+      hours += 24;
+      days--;
+    }
+
+    if (days < 0) {
+      const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+      days += lastMonth.getDate();
+      months--;
+    }
+
+    if (months < 0) {
+      months += 12;
+      years--;
+    }
+
+    document.getElementById("years").textContent = years;
+    document.getElementById("months").textContent = months;
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+  }
+
+  updateCounter();
+  setInterval(updateCounter, 1000);
+</script>
+</body>
+</html>
