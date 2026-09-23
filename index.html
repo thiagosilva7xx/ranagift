@@ -35,14 +35,8 @@
  <section class="album-section">
   <div class="album-cover">
     <div class="carousel" id="carousel">
-      <img src="assets/fotos/1.jpg">
-      <img src="assets/fotos/6.jpeg">
-      <img src="assets/fotos/2.jpg">
-      <img src="assets/fotos/3.jpeg">
-      <img src="assets/fotos/5.jpeg">
-      <img src="assets/fotos/4.jpeg">
-      
-      
+      <!-- As fotos são inseridas aqui automaticamente pelo script.js,
+           lendo todo o conteúdo de assets/fotos -->
     </div>
   </div>
 
@@ -116,7 +110,7 @@
   <!-- SOBRE O CASAL -->
   <section class="card about">
 <div class="about-photo">
-  <img src="assets/fotos/7.jpeg">
+  <img src="assets/fotos/7.jpeg" alt="Thiago e Rana">
   <span class="about-title">Sobre o casal</span>
 </div>
     <div class="about-names">
@@ -157,73 +151,6 @@
     </div>
   </div>
 </section>
-  <!-- MENSAGEM -->
-<section class="card message">
-  <div class="soneto">
-    <p class="soneto-preview">
-      Rana, minha amada tão especial,
-    </p>
-
-    <div class="soneto-full" id="sonetoFull">
-      <p>Tão doce e graciosa como a mais delicada flor,</p>
-      <p>Seu brilho e aroma invadem cada local,</p>
-      <p>Em teus olhos só encontro amor.</p>
-
-      <br>
-
-      <p>Rana é como Moonlight Sonata,</p>
-      <p>Uma sinfonia de amor e emoção,</p>
-      <p>Suas curvas suaves, tão delicadas,</p>
-      <p>Refletem a melodia e a paixão.</p>
-
-      <br>
-
-      <p>Rana inspira e motiva,</p>
-      <p>Assim como Ikigai,</p>
-      <p>Ela me faz estar.</p>
-
-      <br>
-
-      <p>Rana, és a luz da lua em minha vida,</p>
-      <p>Melodiosa inspiração que me cativa.</p>
-
-
-      <br>
-
-      <p> <strong>Esse foi o soneto que te enviei em 2023. Mas HOJE, te escrevi um novo:</strong></p>
-
-      <br>
-
-      <p>No caos do mundo, és porto e calmaria,</p>
-      <p>Teu riso apazigua o meu viver;</p>
-      <p>Em ti, meu tempo encontra harmonia,</p>
-      <p>És verso certo que escolhi escrever.</p>
-
-<br>
-
-      <p>Se a noite cai, teu olhar me guia,</p>
-      <p>Luz que insiste em jamais se perder;</p>
-      <p>Teu nome é chama, é doce poesia,</p>
-      <p>Que em minha voz aprende a florescer.</p>
-
-<br>
-
-      <p>Se o dia pesa, és abrigo e chão,</p>
-      <p>Promessa firme contra a solidão;</p>
-      <p>Em teus silêncios, encontro meu lar.</p>
-
-<br>
-
-      <p>E se o futuro ousar nos desafiar,</p>
-      <p>Que seja ao lado teu meu coração,</p>
-      <p>Pois amar-te é meu jeito de ficar.</p>
-    </div>
-
-    <button class="reveal-btn" id="revealBtn">
-      Mostrar mensagem completa
-    </button>
-  </div>
-</section>
 
 </main>
 
@@ -232,57 +159,6 @@
 
 <!-- JS -->
 <script src="script.js"></script>
-<script>
-
-  const startDate = new Date(2020, 8, 23, 0, 40, 0);
-
-  function updateCounter() {
-    const now = new Date();
-
-    let years = now.getFullYear() - startDate.getFullYear();
-    let months = now.getMonth() - startDate.getMonth();
-    let days = now.getDate() - startDate.getDate();
-    let hours = now.getHours() - startDate.getHours();
-    let minutes = now.getMinutes() - startDate.getMinutes();
-    let seconds = now.getSeconds() - startDate.getSeconds();
-
-    if (seconds < 0) {
-      seconds += 60;
-      minutes--;
-    }
-
-    if (minutes < 0) {
-      minutes += 60;
-      hours--;
-    }
-
-    if (hours < 0) {
-      hours += 24;
-      days--;
-    }
-
-    if (days < 0) {
-      const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-      days += lastMonth.getDate();
-      months--;
-    }
-
-    if (months < 0) {
-      months += 12;
-      years--;
-    }
-
-    document.getElementById("years").textContent = years;
-    document.getElementById("months").textContent = months;
-    document.getElementById("days").textContent = days;
-    document.getElementById("hours").textContent = hours;
-    document.getElementById("minutes").textContent = minutes;
-    document.getElementById("seconds").textContent = seconds;
-  }
-
-  updateCounter();
-  setInterval(updateCounter, 1000);
-</script>
 </body>
 </html>
 
