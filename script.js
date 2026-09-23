@@ -277,9 +277,30 @@ fetchAllPhotos()
 
 /*PLAYER DE ÁUDIO*/
 
+// Faixas do player. "src" é o caminho do arquivo dentro de assets/audio —
+// pode ter espaços/parênteses no nome, o encodeURI() na hora de tocar
+// cuida de deixar isso num formato que o navegador aceita.
+const TRACKS = [
+  {
+    src: "assets/audio/musica.mp3",
+    title: "Sweet",
+    artist: "Cigarettes After Sex",
+  },
+  {
+    src: "assets/audio/PUBLIC - Make You Mine (Official Lyric Video) - PUBLICTHEBAND (youtube).mp3",
+    title: "Make You Mine",
+    artist: "PUBLIC",
+  },
+];
+
 const audio = document.getElementById("audio");
 const playBtn = document.getElementById("playBtn");
 const playIcon = document.getElementById("playIcon");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+const trackTitleEl = document.getElementById("trackTitle");
+const trackArtistEl = document.getElementById("trackArtist");
 
 const progressBar = document.getElementById("progressBar");
 const progressFill = document.getElementById("progressFill");
@@ -291,12 +312,41 @@ const remainingTimeEl = document.getElementById("remainingTime");
 if(audio) {
     audio.volume = 0.4; 
     let isPlaying = false;
+    let currentTrackIndex = 0;
 
     /* PLAY / PAUSE */
     function updatePlayIcon() {
       playIcon.innerHTML = isPlaying
         ? `<path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/>`
         : `<path d="M8 5v14l11-7z" fill="currentColor"/>`;
+    }
+
+    /* CARREGA UMA FAIXA (usado no início e pelos botões anterior/próxima) */
+    function loadTrack(i, { keepPlaying = isPlaying } = {}) {
+      currentTrackIndex = (i + TRACKS.length) % TRACKS.length;
+      const track = TRACKS[currentTrackIndex];
+
+      audio.src = encodeURI(track.src);
+      audio.load();
+
+      trackTitleEl.textContent = track.title;
+      trackArtistEl.textContent = track.artist;
+
+      // reseta a barra de progresso na hora, sem esperar o timeupdate
+      progressFill.style.width = "0%";
+      progressThumb.style.left = "0%";
+      currentTimeEl.textContent = "0:00";
+      remainingTimeEl.textContent = "-0:00";
+
+      if (keepPlaying) {
+        audio.play().catch(e => console.log("Interação necessária para tocar áudio"));
+        isPlaying = true;
+        playBtn.classList.add("playing");
+      } else {
+        isPlaying = false;
+        playBtn.classList.remove("playing");
+      }
+      updatePlayIcon();
     }
 
     playBtn.addEventListener("click", () => {
@@ -310,6 +360,18 @@ if(audio) {
       isPlaying = !isPlaying;
       updatePlayIcon();
     });
+
+    /* ANTERIOR / PRÓXIMA */
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        loadTrack(currentTrackIndex - 1);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        loadTrack(currentTrackIndex + 1);
+      });
+    }
 
     /* TEMPO */
     function formatTime(seconds) {
@@ -344,6 +406,9 @@ if(audio) {
           audio.currentTime = 0;
       }
     });
+
+    /* CARREGA A PRIMEIRA FAIXA (sem tocar sozinho) */
+    loadTrack(0, { keepPlaying: false });
 }
 
 /*SHUFFLE & REPEAT*/
