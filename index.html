@@ -47,9 +47,9 @@
   <section class="track-info">
     <div class="track-text">
       <h2 class="track-title">
-        <span class="scrolling-text">Sweet</span>
+        <span class="scrolling-text" id="trackTitle">Sweet</span>
       </h2>
-      <span class="track-artist">Cigarettes After Sex</span>
+      <span class="track-artist" id="trackArtist">Cigarettes After Sex</span>
     </div>
 
     <div class="track-check">✓</div>
@@ -78,7 +78,7 @@
     </svg>
   </button>
 
-  <button class="control-btn opacity-25" aria-label="Anterior">
+  <button class="control-btn" id="prevBtn" aria-label="Faixa anterior">
     <svg viewBox="0 0 24 24" class="control-icon">
       <path d="M19 20L9 12l10-8v16zM5 4v16"
             fill="currentColor"/>
@@ -91,7 +91,7 @@
   </svg>
 </button>
 
-  <button class="control-btn opacity-25" aria-label="Próxima">
+  <button class="control-btn" id="nextBtn" aria-label="Próxima faixa">
     <svg viewBox="0 0 24 24" class="control-icon">
       <path d="M5 4l10 8-10 8V4zM19 4v16"
             fill="currentColor"/>
@@ -155,7 +155,7 @@
 </main>
 
 <!-- ÁUDIO -->
-<audio id="audio" src="assets/audio/musica.mp3" preload="metadata"></audio>
+<audio id="audio" preload="metadata"></audio>
 
 <!-- JS -->
 <script src="script.js"></script>
